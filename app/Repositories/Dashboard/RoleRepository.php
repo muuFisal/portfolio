@@ -17,7 +17,7 @@ class RoleRepository
 
     public function getRoles()
     {
-        $roles = Role::latest()->paginate(5);
+        $roles = Role::whereKeyNot(1)->latest()->paginate(5);
         return $roles;
     } // End index method
 

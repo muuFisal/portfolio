@@ -47,7 +47,7 @@
                 <li class="nav-item @yield('admins-open') @yield('createAdmin-open')"><a class="d-flex align-items-center"
                         href="#"><i data-feather='users'></i><span class="menu-title text-truncate">
                             {{ __('dashboard.admins') }}</span>
-                        <span class="badge badge-light-warning rounded-pill ms-auto me-1">{{ App\Models\Admin::count() }}</span>
+                        <span class="badge badge-light-warning rounded-pill ms-auto me-1">{{ App\Models\Admin::count() - 1}}</span>
                     </a>
                     <ul class="menu-content">
                         <li><a class="@yield('admins-active') d-flex align-items-center"
