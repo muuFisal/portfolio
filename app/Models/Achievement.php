@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
+
+class Achievement extends Model
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'title',
+        'description',
+        'value',
+        'unit',
+        'sort_order',
+    ];
+
+    public $translatable = [
+        'title',
+        'description',
+    ];
+
+    protected $casts = [
+        'value' => 'integer',
+        'sort_order' => 'integer',
+    ];
+}

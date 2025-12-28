@@ -13,57 +13,59 @@ class SettingsSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            // مترجم
+            // ✅ Translatable (AR/EN)
             'site_name' => [
-                'en' => 'Checkeout',
-                'ar' => 'Checkeout',
+                'en' => 'Fisal Portfolio',
+                'ar' => 'بورتفوليو فيصل',
             ],
             'site_title' => [
-                'en' => 'Checkeout — Simple, Secure Payments',
-                'ar' => 'تشيك آوت — مدفوعات سهلة وآمنة',
+                'en' => 'Mohamed Fisal — Backend / Full-Stack Developer',
+                'ar' => 'محمد فيصل — مطوّر باك إند / فول ستاك',
             ],
             'site_desc' => [
-                'en' => 'Accept cards and wallets with a fast, reliable checkout for one-time and recurring payments.',
-                'ar' => 'اقبل البطاقات والمحافظ عبر بوابة دفع سريعة وموثوقة للمدفوعات الفورية والمتكررة.',
+                'en' => 'Personal portfolio of Mohamed Fisal showcasing projects, experience, achievements, and contact details.',
+                'ar' => 'بورتفوليو شخصي لمحمد فيصل لعرض المشاريع والخبرات والإنجازات وطرق التواصل.',
             ],
             'site_address' => [
                 'en' => 'Cairo, Egypt',
                 'ar' => 'القاهرة، مصر',
             ],
             'meta_key' => [
-                'en' => 'payments, checkout, online payments, gateway, cards, wallet, subscriptions',
-                'ar' => 'مدفوعات, تشيك آوت, دفع أونلاين, بوابة دفع, بطاقات, محفظة, اشتراكات',
+                'en' => 'Mohamed Fisal, Fisal, portfolio, backend developer, full stack developer, Laravel, PHP, Livewire, React, API, MySQL',
+                'ar' => 'محمد فيصل, فيصل, بورتفوليو, مطور باك اند, فول ستاك, لارافيل, PHP, لايف واير, رياكت, API, MySQL',
             ],
             'meta_desc' => [
-                'en' => 'All-in-one checkout for cards and wallets with fraud protection and clear reporting.',
-                'ar' => 'بوابة دفع متكاملة للبطاقات والمحافظ مع حماية من الاحتيال وتقارير واضحة.',
+                'en' => 'Mohamed Fisal portfolio — Backend / Full-Stack Developer (Laravel, PHP, Livewire, React). Explore projects, experience, and achievements.',
+                'ar' => 'بورتفوليو محمد فيصل — مطوّر باك إند / فول ستاك (Laravel, PHP, Livewire, React). استعرض المشاريع والخبرات والإنجازات.',
             ],
 
-            // غير مترجم
-            'site_phone'    => '+201234567890',
-            'site_email'    => 'info@checkeout.com',
-            'email_support' => 'support@checkeout.com',
+            // ✅ Non-translatable (put real values later)
+            'site_phone'    => '+20XXXXXXXXXX',
+            'site_email'    => 'mohamed.fisal@example.com',
+            'email_support' => 'support@example.com',
 
-            // سوشيال
-            'facebook' => 'https://facebook.com/checkeout',
-            'x_url'    => 'https://x.com/checkeout',
-            'youtube'  => 'https://youtube.com/@checkeout',
-            'instagram' => 'https://instagram.com/checkeout',
-            'tiktok'   => 'https://tiktok.com/@checkeout',
-            'linkedin' => 'https://linkedin.com/company/checkeout',
-            'whatsapp' => '+201234567890',
+            // ✅ Social links (update to your real accounts)
+            'facebook'  => '',
+            'x_url'     => '',
+            'youtube'   => '',
+            'instagram' => '',
+            'tiktok'    => '',
+            'linkedin'  => '',
+            'whatsapp'  => '+20XXXXXXXXXX',
+            'github'    => '',
 
-            // ميديا
+            // ✅ Media (these should match your uploads/public assets strategy)
             'logo'    => 'uploads/images/logo.png',
             'favicon' => 'uploads/images/logo.png',
 
-            // أخرى
-            'site_copyright' => '© ' . now()->year . ' Checkeout. All rights reserved.',
-            'promotion_url'  => 'https://checkeout.com/promotion',
+            // ✅ Others
+            'site_copyright' => '© ' . now()->year . ' Mohamed Fisal. All rights reserved.',
+            'promotion_url'  => '', // not needed for portfolio, leave empty
         ];
 
-        // تحديث أول سجل إن وُجد أو إنشاء واحد جديد
+        // ✅ Update first row if exists, otherwise create
         $existing = Setting::query()->first();
+
         if ($existing) {
             $existing->update($data);
         } else {

@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('tiktok')->nullable();
             $table->text('linkedin')->nullable();
             $table->text('whatsapp')->nullable();
+            $table->text('github')->nullable();
             $table->longText('meta_key')->nullable();
             $table->longText('meta_desc');
             $table->text('logo');

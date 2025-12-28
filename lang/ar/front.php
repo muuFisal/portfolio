@@ -198,6 +198,12 @@ return [
     'otp-verified-successfully'                 => 'تم التحقق من رمز التحقق بنجاح',
     'password-reset-successful'                 => 'تمت إعادة تعيين كلمة المرور بنجاح',
     'otp-resent-successfully'                   => 'تمت إعادة إرسال رمز التحقق بنجاح',
+
+    // Portfolio API
+    'retrieved-successfully'                    => 'تم جلب البيانات بنجاح',
+    'created-successfully'                      => 'تم الإنشاء بنجاح',
+    'not-found'                                 => 'غير موجود',
+    'message-received'                          => 'تم الاستلام',
     'logout-failed'                             => 'فشل تسجيل الخروج',
     'user-not-found'                            => 'المستخدم غير موجود',
     'invalid-credentials'                       => 'بيانات الدخول غير صحيحة',

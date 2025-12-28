@@ -198,6 +198,12 @@ return [
     'otp-verified-successfully'                     => 'OTP verified successfully',
     'password-reset-successful'                     => 'Password reset successful',
     'otp-resent-successfully'                       => 'OTP resent successfully',
+
+    // Portfolio API
+    'retrieved-successfully'                        => 'Retrieved successfully',
+    'created-successfully'                          => 'Created successfully',
+    'not-found'                                     => 'Not found',
+    'message-received'                              => 'Received',
     'logout-failed'                                 => 'Logout failed',
     'user-not-found'                                => 'User not found',
     'invalid-credentials'                           => 'Invalid credentials',

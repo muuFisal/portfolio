@@ -42,6 +42,7 @@ class Setting extends Model
         'tiktok',
         'linkedin',
         'whatsapp',
+        'github',
 
         'meta_key',
         'meta_desc',
