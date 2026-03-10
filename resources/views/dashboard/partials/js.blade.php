@@ -75,6 +75,45 @@
 
 @stack('js')
 <script>
+    const dashboardEventDetail = event => Array.isArray(event.detail) ? (event.detail[0] ?? {}) : (event.detail ?? {});
+
+    window.addEventListener('dashboard-toast', event => {
+        const detail = dashboardEventDetail(event);
+
+        Swal.fire({
+            position: 'top-start',
+            icon: detail.type || 'success',
+            title: detail.message || '{{ __('validation.something-valid') }}',
+            showConfirmButton: false,
+            timer: 1800,
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        });
+    });
+
+    window.addEventListener('dashboard-confirm-delete', event => {
+        const detail = dashboardEventDetail(event);
+
+        Swal.fire({
+            title: "{{ __('dashboard.are_you_sure') }}",
+            text: "{{ __('dashboard.confirm_delete_message') }}",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "{{ __('dashboard.yes_delete') }}",
+            cancelButtonText: "{{ __('dashboard.cancel') }}"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Livewire.dispatch(detail.listener || 'deleteItem', {
+                    id: detail.id
+                });
+            }
+        });
+    });
+</script>
+
+<script>
     $(window).on('load', function() {
         if (feather) {
             feather.replace({

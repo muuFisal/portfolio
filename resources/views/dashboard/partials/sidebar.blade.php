@@ -80,6 +80,119 @@
                 </li>
             @endcan
 
+            @php
+                $portfolioPermissions = [
+                    'portfolio_settings_view',
+                    'portfolio_profile_view',
+                    'portfolio_about_view',
+                    'portfolio_home_sections_view',
+                    'portfolio_navigation_view',
+                    'portfolio_seo_pages_view',
+                    'portfolio_projects_view',
+                    'portfolio_achievements_view',
+                    'portfolio_experiences_view',
+                    'portfolio_skills_view',
+                    'portfolio_events_view',
+                    'portfolio_testimonials_view',
+                    'portfolio_comments_view',
+                    'portfolio_contacts_view',
+                ];
+            @endphp
+
+            @if (auth('admin')->user()?->canAny($portfolioPermissions))
+                <li class="nav-item @yield('portfolio-open')"><a class="d-flex align-items-center" href="#">
+                        <i data-feather="briefcase"></i><span class="menu-title text-truncate">
+                            {{ __('dashboard.portfolio') }}</span>
+                    </a>
+                    <ul class="menu-content">
+                        @can('portfolio_settings_view')
+                            <li><a class="@yield('portfolio-settings-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.settings') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-settings') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_profile_view')
+                            <li><a class="@yield('portfolio-profile-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.profile') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-profile') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_about_view')
+                            <li><a class="@yield('portfolio-about-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.about') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-about') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_home_sections_view')
+                            <li><a class="@yield('portfolio-sections-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.sections.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-home-sections') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_navigation_view')
+                            <li><a class="@yield('portfolio-navigation-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.navigation.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-navigation') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_seo_pages_view')
+                            <li><a class="@yield('portfolio-seo-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.seo-pages.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-seo-pages') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_projects_view')
+                            <li><a class="@yield('portfolio-projects-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.projects.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-projects') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_achievements_view')
+                            <li><a class="@yield('portfolio-achievements-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.achievements.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-highlights') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_experiences_view')
+                            <li><a class="@yield('portfolio-experiences-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.experiences.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-experiences') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_skills_view')
+                            <li><a class="@yield('portfolio-skills-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.skills.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-skills') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_events_view')
+                            <li><a class="@yield('portfolio-events-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.events.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-events') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_testimonials_view')
+                            <li><a class="@yield('portfolio-testimonials-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.testimonials.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-testimonials') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_comments_view')
+                            <li><a class="@yield('portfolio-comments-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.comments.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-comments') }}</span></a>
+                            </li>
+                        @endcan
+                        @can('portfolio_contacts_view')
+                            <li><a class="@yield('portfolio-contacts-active') d-flex align-items-center"
+                                    href="{{ route('dashboard.portfolio.contacts.index') }}"><i data-feather="circle"></i><span
+                                        class="menu-item text-truncate">{{ __('dashboard.portfolio-contact-messages') }}</span></a>
+                            </li>
+                        @endcan
+                    </ul>
+                </li>
+            @endif
+
 
 
             @can('settings')
