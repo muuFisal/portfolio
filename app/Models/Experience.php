@@ -12,6 +12,11 @@ class Experience extends Model
     protected $fillable = [
         'role',
         'company',
+        'summary',
+        'location',
+        'employment_type',
+        'company_url',
+        'logo',
         'start_date',
         'end_date',
         'highlights',
@@ -20,11 +25,14 @@ class Experience extends Model
 
     public $translatable = [
         'role',
+        'summary',
+        'location',
+        'employment_type',
     ];
 
     protected $casts = [
         'start_date' => 'date',
-        'end_date'   => 'date',
+        'end_date' => 'date',
         'highlights' => 'array',
         'sort_order' => 'integer',
     ];

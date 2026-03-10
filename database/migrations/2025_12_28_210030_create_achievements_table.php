@@ -8,18 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('achievements', function (Blueprint $t) {
-            $t->id();
-            // Translatable JSON: {"ar": "...", "en": "..."}
-            $t->json('title');
-            $t->json('description')->nullable();
-
-            // e.g. number to show in UI (projects count, years exp, ...)
-            $t->unsignedInteger('value')->nullable();
-            $t->string('unit')->nullable(); // e.g. '+', 'Projects', ...
-
-            $t->unsignedInteger('sort_order')->default(0)->index();
-            $t->timestamps();
+        Schema::create('achievements', function (Blueprint $table) {
+            $table->id();
+            $table->json('title');
+            $table->json('description')->nullable();
+            $table->string('icon')->nullable();
+            $table->unsignedInteger('value')->nullable();
+            $table->string('unit')->nullable();
+            $table->unsignedInteger('sort_order')->default(0)->index();
+            $table->timestamps();
         });
     }
 

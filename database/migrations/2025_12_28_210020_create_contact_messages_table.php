@@ -8,15 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('contact_messages', function (Blueprint $t) {
-            $t->id();
-            $t->string('name');
-            $t->string('email');
-            $t->string('phone')->nullable();
-            $t->string('subject')->nullable();
-            $t->text('message');
-            $t->string('source')->nullable();
-            $t->timestamps();
+        Schema::create('contact_messages', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('company')->nullable();
+            $table->string('service_interest')->nullable();
+            $table->string('budget_range')->nullable();
+            $table->string('subject')->nullable();
+            $table->text('message');
+            $table->string('source')->nullable();
+            $table->string('status')->default('new')->index();
+            $table->string('ip_address')->nullable();
+            $table->text('user_agent')->nullable();
+            $table->timestamps();
         });
     }
 

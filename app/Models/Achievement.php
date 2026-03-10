@@ -12,6 +12,7 @@ class Achievement extends Model
     protected $fillable = [
         'title',
         'description',
+        'icon',
         'value',
         'unit',
         'sort_order',

@@ -6,20 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->text('site_name');
-            $table->text('site_desc');
-            $table->text('site_title');
-            $table->string('site_phone');
-            $table->text('site_address');
-            $table->text('site_email');
-            $table->text('email_support');
+            $table->json('site_name');
+            $table->json('site_desc');
+            $table->json('site_title');
+            $table->string('site_phone')->nullable();
+            $table->json('site_address');
+            $table->string('site_email')->nullable();
+            $table->string('email_support')->nullable();
             $table->text('facebook')->nullable();
             $table->text('x_url')->nullable();
             $table->text('youtube')->nullable();
@@ -28,19 +25,20 @@ return new class extends Migration
             $table->text('linkedin')->nullable();
             $table->text('whatsapp')->nullable();
             $table->text('github')->nullable();
-            $table->longText('meta_key')->nullable();
-            $table->longText('meta_desc');
-            $table->text('logo');
-            $table->text('favicon');
-            $table->text('site_copyright');
-            $table->text('promotion_url');
+            $table->json('meta_key')->nullable();
+            $table->json('meta_desc')->nullable();
+            $table->text('logo')->nullable();
+            $table->text('logo_dark')->nullable();
+            $table->text('favicon')->nullable();
+            $table->text('resume')->nullable();
+            $table->text('profile_image')->nullable();
+            $table->text('default_og_image')->nullable();
+            $table->text('site_copyright')->nullable();
+            $table->text('promotion_url')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('settings');

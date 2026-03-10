@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Portfolio\PortfolioHomeController;
+use App\Http\Controllers\Api\Portfolio\PortfolioCareerController;
+use App\Http\Controllers\Api\Portfolio\PortfolioSharedController;
+use App\Http\Controllers\Api\Portfolio\PortfolioCommentsController;
+use App\Http\Controllers\Api\Portfolio\PortfolioContactsController;
+use App\Http\Controllers\Api\Portfolio\PortfolioProjectsController;
 use App\Http\Controllers\Api\EventsController;
 use App\Http\Controllers\Api\SkillsController;
 use App\Http\Controllers\Api\ContactController;
@@ -11,6 +17,37 @@ use App\Http\Controllers\Api\Auth\ForgotController;
 use App\Http\Controllers\Api\ExperiencesController;
 use App\Http\Controllers\Api\AchievementsController;
 use App\Http\Controllers\Api\TestimonialsController;
+
+Route::prefix('v1/portfolio')->group(function () {
+    Route::get('/settings', [PortfolioSharedController::class, 'settings']);
+    Route::get('/navigation', [PortfolioSharedController::class, 'navigation']);
+    Route::get('/seo/pages/{pageKey}', [PortfolioSharedController::class, 'seoPage']);
+    Route::get('/profile', [PortfolioSharedController::class, 'profile']);
+    Route::get('/about', [PortfolioSharedController::class, 'about']);
+
+    Route::prefix('home')->group(function () {
+        Route::get('/hero', [PortfolioHomeController::class, 'hero']);
+        Route::get('/highlights', [PortfolioHomeController::class, 'highlights']);
+        Route::get('/featured-projects', [PortfolioHomeController::class, 'featuredProjects']);
+        Route::get('/process', [PortfolioHomeController::class, 'process']);
+        Route::get('/skills-showcase', [PortfolioHomeController::class, 'skillsShowcase']);
+        Route::get('/open-source', [PortfolioHomeController::class, 'openSource']);
+    });
+
+    Route::get('/projects', [PortfolioProjectsController::class, 'index']);
+    Route::get('/projects/{slug}', [PortfolioProjectsController::class, 'show']);
+
+    Route::get('/experiences', [PortfolioCareerController::class, 'experiences']);
+    Route::get('/skills', [PortfolioCareerController::class, 'skills']);
+    Route::get('/events', [PortfolioCareerController::class, 'events']);
+    Route::get('/testimonials', [PortfolioCareerController::class, 'testimonials']);
+
+    Route::get('/comments', [PortfolioCommentsController::class, 'index']);
+    Route::post('/comments', [PortfolioCommentsController::class, 'store'])->middleware('throttle:portfolio-comments');
+
+    Route::get('/contact-info', [PortfolioContactsController::class, 'info']);
+    Route::post('/contact', [PortfolioContactsController::class, 'store'])->middleware('throttle:portfolio-contact');
+});
 
 
 ## ================== SETTINGS ================== ##

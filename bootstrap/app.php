@@ -19,6 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->api(prepend: [
+            \App\Http\Middleware\SetApiLocale::class,
+        ]);
+
         $middleware->redirectGuestsTo(function () {
             if (request()->is('*/dashboard/*')) {
                 return route('dashboard.login');
@@ -40,6 +44,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
             'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
             'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
+            'set-api-locale'         => \App\Http\Middleware\SetApiLocale::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

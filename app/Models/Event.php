@@ -12,8 +12,12 @@ class Event extends Model
     protected $fillable = [
         'title',
         'date',
+        'type',
         'location',
         'description',
+        'url',
+        'cover_image',
+        'featured',
         'sort_order',
     ];
 
@@ -25,6 +29,7 @@ class Event extends Model
 
     protected $casts = [
         'date' => 'date',
+        'featured' => 'boolean',
         'sort_order' => 'integer',
     ];
 }

@@ -7,69 +7,61 @@ use Illuminate\Database\Seeder;
 
 class SettingsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
         $data = [
-            // ✅ Translatable (AR/EN)
             'site_name' => [
                 'en' => 'Fisal Portfolio',
                 'ar' => 'بورتفوليو فيصل',
             ],
             'site_title' => [
-                'en' => 'Mohamed Fisal — Backend / Full-Stack Developer',
-                'ar' => 'محمد فيصل — مطوّر باك إند / فول ستاك',
+                'en' => 'Mohamed Fisal | Backend & Full-Stack Engineer',
+                'ar' => 'محمد فيصل | مهندس باك إند وفول ستاك',
             ],
             'site_desc' => [
-                'en' => 'Personal portfolio of Mohamed Fisal showcasing projects, experience, achievements, and contact details.',
-                'ar' => 'بورتفوليو شخصي لمحمد فيصل لعرض المشاريع والخبرات والإنجازات وطرق التواصل.',
+                'en' => 'Portfolio backend for Mohamed Fisal with projects, experience, testimonials, and contact channels.',
+                'ar' => 'واجهة برمجية لبورتفوليو محمد فيصل تعرض المشاريع والخبرات وآراء العملاء وقنوات التواصل.',
             ],
             'site_address' => [
                 'en' => 'Cairo, Egypt',
                 'ar' => 'القاهرة، مصر',
             ],
             'meta_key' => [
-                'en' => 'Mohamed Fisal, Fisal, portfolio, backend developer, full stack developer, Laravel, PHP, Livewire, React, API, MySQL',
-                'ar' => 'محمد فيصل, فيصل, بورتفوليو, مطور باك اند, فول ستاك, لارافيل, PHP, لايف واير, رياكت, API, MySQL',
+                'en' => 'Mohamed Fisal, Laravel, PHP, Portfolio, Backend Developer',
+                'ar' => 'محمد فيصل، لارافيل، PHP، بورتفوليو، مطور باك إند',
             ],
             'meta_desc' => [
-                'en' => 'Mohamed Fisal portfolio — Backend / Full-Stack Developer (Laravel, PHP, Livewire, React). Explore projects, experience, and achievements.',
-                'ar' => 'بورتفوليو محمد فيصل — مطوّر باك إند / فول ستاك (Laravel, PHP, Livewire, React). استعرض المشاريع والخبرات والإنجازات.',
+                'en' => 'Mohamed Fisal portfolio API serving profile, case studies, testimonials, and contact details.',
+                'ar' => 'واجهة برمجية لبورتفوليو محمد فيصل تعرض الملف الشخصي ودراسات الحالة وآراء العملاء وبيانات التواصل.',
             ],
-
-            // ✅ Non-translatable (put real values later)
-            'site_phone'    => '+20XXXXXXXXXX',
-            'site_email'    => 'mohamed.fisal@example.com',
-            'email_support' => 'support@example.com',
-
-            // ✅ Social links (update to your real accounts)
-            'facebook'  => '',
-            'x_url'     => '',
-            'youtube'   => '',
-            'instagram' => '',
-            'tiktok'    => '',
-            'linkedin'  => '',
-            'whatsapp'  => '+20XXXXXXXXXX',
-            'github'    => '',
-
-            // ✅ Media (these should match your uploads/public assets strategy)
-            'logo'    => 'uploads/images/logo.png',
+            'site_phone' => '+20 100 000 0000',
+            'site_email' => 'hello@fisal.dev',
+            'email_support' => 'support@fisal.dev',
+            'facebook' => 'https://facebook.com/fisal.dev',
+            'x_url' => 'https://x.com/fisaldev',
+            'youtube' => 'https://youtube.com/@fisaldev',
+            'instagram' => 'https://instagram.com/fisal.dev',
+            'tiktok' => 'https://tiktok.com/@fisaldev',
+            'linkedin' => 'https://linkedin.com/in/fisaldev',
+            'whatsapp' => 'https://wa.me/201000000000',
+            'github' => 'https://github.com/fisaldev',
+            'logo' => 'uploads/images/logo.png',
+            'logo_dark' => 'uploads/images/logo_white.png',
             'favicon' => 'uploads/images/logo.png',
-
-            // ✅ Others
+            'resume' => null,
+            'profile_image' => 'uploads/users/1758033097_68c974c9d8ca5_about_2.jpg',
+            'default_og_image' => 'uploads/images/Frame 2087326965.png',
             'site_copyright' => '© ' . now()->year . ' Mohamed Fisal. All rights reserved.',
-            'promotion_url'  => '', // not needed for portfolio, leave empty
+            'promotion_url' => 'https://brmja.tech',
         ];
 
-        // ✅ Update first row if exists, otherwise create
         $existing = Setting::query()->first();
 
         if ($existing) {
             $existing->update($data);
-        } else {
-            Setting::query()->create($data);
+            return;
         }
+
+        Setting::query()->create($data);
     }
 }

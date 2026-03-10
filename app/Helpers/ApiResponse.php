@@ -5,17 +5,14 @@ namespace App\Helpers;
 
 class ApiResponse
 {
-    static function sendResponse($code = 200, $message = null, $data = null, $pagination = null)
+    public static function sendResponse($code = 200, $message = null, $data = null, $pagination = null)
     {
         $response = [
             'code'    => $code,
-            'message' => $message,
+            'message' => $message ?? 'Success',
             'data'    => $data,
+            'pagination' => $pagination,
         ];
-
-        if ($pagination) {
-            $response['pagination'] = $pagination;
-        }
 
         return response()->json($response, $code);
     }
